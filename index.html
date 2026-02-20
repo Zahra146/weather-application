@@ -3,11 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<script src="https://unpkg.com/axios@1.13.2/dist/axios.min.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
- <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.13.2/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios@1.13.2/dist/axios.min.js"></script>
 
     <title>Weather App</title>
   </head>
@@ -27,28 +31,36 @@
 
       <main>
         <div class="weather-app-data">
-            <div>
-        <h1 class="weather-app-city" id="city">Paris</h1>
-        <p class="weather-app-details">
-            <span id="time">,</span>
-            <span id="description"></span>
-            <br />Humidity: <strong id="humidity">93%</strong>, Wind: <strong id="wind-speed">5.14 km/h</strong> 
-          <br />
+          <div>
+            <h1 class="weather-app-city" id="city"></h1>
+            <p class="weather-app-details">
+              <span id="time">,</span>
+              <span id="description"></span>
+              <br />Humidity <strong id="humidity"></strong>, Wind:
+              <strong id="wind-speed"></strong>
+              <br />
+            </p>
           </div>
           <div class="weather-app-container">
-            <span id="icon"> <img src="#"></span>
-            <span class="weather-app-temperature">9</span>
-            <span class="weather-app-unit" > °C</span></div>
-          
-        </p>
+            <div class="weather-app-icon" id="icon"><img src="#" /></div>
+            <div class="weather-app-temperature" id="temperature"></div>
+            <div class="weather-app-unit">°C</div>
+          </div>
         </div>
       </main>
       <footer>
-          This project was coded by <a href="https://github.com/Zahra146" target="_blank">Zara</a>, is open-sourced on
-          <a href="https://github.com/Zahra146?tab=repositories" target="_blank">GitHub</a> and hosted on <a href="#" target="_blank">Netlify
+        This project was coded by
+        <a href="https://github.com/Zahra146" target="_blank">Zara</a>, is
+        open-sourced on
+        <a href="https://github.com/Zahra146?tab=repositories" target="_blank"
+          >GitHub</a
+        >
+        and hosted on
+        <a href="https://weather-chic-app.netlify.app/" target="_blank"
+          >Netlify
         </a>
       </footer>
     </div>
-    <script src="index.js"></script>
+    <script src="home.js"></script>
   </body>
 </html>
