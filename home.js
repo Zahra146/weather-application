@@ -1,45 +1,69 @@
-function updateWeather(response){
+function refreshTemperature(response){
+
+    console.log(response);
+
     let temperatureElement=document.querySelector("#temperature");
     let temperature=Math.round(response.data.temperature.current);
-    
+    temperatureElement.innerHTML=temperature;
+
     let cityElement=document.querySelector("#city");
     cityElement.innerHTML=response.data.city;
-    temperatureElement.innerHTML= temperature;
 
-    let descritpionElement=document.querySelector("#description");
-    let description=response.data.condition.description;
-    descritpionElement.innerHTML= description;
+    let descriptionElement=document.querySelector("#description");
+    descriptionElement.innerHTML=response.data.condition.description;
 
     let humidityElement=document.querySelector("#humidity");
-    let humidity=`${response.data.temperature.humidity}%`;
-    humidityElement.innerHTML=humidity;
+    humidityElement.innerHTML=`${response.data.temperature.humidity} %`;
 
-    let windElement=document.querySelector("#wind-speed");
-    let wind=`${response.data.wind.speed} km/h`;
-    windElement.innerHTML=wind;
+    let windSpeedElment=document.querySelector("#wind-speed");
+    windSpeedElment.innerHTML=`${response.data.wind.speed} km/h`;
+
+    let date=new Date(response.data.time * 1000);
+
+    let timeElement=document.querySelector("#time");
+    timeElement.innerHTML=formatDate(date);
+
 }
 
-function searchCity(city){
+function showCity(city){
+
     let apiKey="8d70acafft7fbf6e5eb3fdfd54o0f4e2";
     let apiUrl=`https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-    
-    axios.get(apiUrl).then(updateWeather)
-    
+
+    axios.get(apiUrl).then(refreshTemperature)
 }
 
 function handleSearchSubmit(event){
     event.preventDefault();
-    let searchInput=document.querySelector("#search-form-input");
-    
-    searchCity(searchInput.value);
+
+    let searchInputElement=document.querySelector("#search-form-input");
+    showCity(searchInputElement.value)
 }
 
-let searchFormElement=document.querySelector("#search-form");
-searchFormElement.addEventListener("submit", handleSearchSubmit);
+function formatDate(date){
 
-searchCity("Tehran");
+    let days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    let day=days[date.getDay()];
+
+    let hours=date.getHours();
+    let minutes=date.getMinutes();
+    if (minutes <10){
+        minutes=`0${minutes}`
+    }
+
+    return `${day} ${hours}:${minutes}`
+    
+
+
+    
+}
 
 
 
+//     return`${day}, ${hours}:${minutes},`
+    
 
+let searchForm=document.querySelector("#search-form");
+searchForm.addEventListener("submit", handleSearchSubmit);
 
+showCity("Tehran");
