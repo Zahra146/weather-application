@@ -1,7 +1,7 @@
 function refreshTemperature(response){
 
-    console.log(response);
-
+    console.log(response)
+   
     let temperatureElement=document.querySelector("#temperature");
     let temperature=Math.round(response.data.temperature.current);
     temperatureElement.innerHTML=temperature;
@@ -19,9 +19,12 @@ function refreshTemperature(response){
     windSpeedElment.innerHTML=`${response.data.wind.speed} km/h`;
 
     let date=new Date(response.data.time * 1000);
-
+    let iconElement=document.querySelector("#icon");
     let timeElement=document.querySelector("#time");
     timeElement.innerHTML=formatDate(date);
+
+    
+    iconElement.innerHTML=`<img src="${response.data.condition.icon_url}" class="weather-app-icon">`;
 
 }
 
@@ -52,15 +55,8 @@ function formatDate(date){
     }
 
     return `${day} ${hours}:${minutes}`
-    
-
-
-    
+        
 }
-
-
-
-//     return`${day}, ${hours}:${minutes},`
     
 
 let searchForm=document.querySelector("#search-form");
